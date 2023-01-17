@@ -1,7 +1,12 @@
-# Project Documentation
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Project requirements
-To run this project you must have all these available in your local machine
+## Getting Started
 
-### 1 Postgres pgAdmin GUI or any other postgres UI installed
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+```d
 
