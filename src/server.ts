@@ -28,7 +28,7 @@ app.use(requestHeaders);
 
 app.use(responseTime());
 
-app.use("v1/api/", userRouter);
+app.use("/api/v1", userRouter);
 
 // page not found
 app.use(pageNotFound);

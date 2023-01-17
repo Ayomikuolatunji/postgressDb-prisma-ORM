@@ -7,7 +7,6 @@ interface requestError {
 interface Error {
   message?: string;
   statusCode?: number;
-
 }
 
 export { requestError, Error };

@@ -34,7 +34,7 @@ app.use((0, compression_1.default)());
 // client request headers
 app.use(requestHeaders_1.default);
 app.use((0, response_time_1.default)());
-app.use("v1/api/", users_route_1.default);
+app.use("/api/v1", users_route_1.default);
 // page not found
 app.use(_404Page_1.pageNotFound);
 // express client error handle
