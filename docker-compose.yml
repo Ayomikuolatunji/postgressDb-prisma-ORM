@@ -4,11 +4,26 @@ services:
     image: postgres:13
     restart: always
     environment:
-      - POSTGRES_USER=${POSTGRES_USER:-default}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-default}
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=ayomiku222
     volumes:
       - postgres:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+  app:
+    container_name: app
+    depends_on:
+      - postgres
+    image: postgres-db
+    build:
+      context: ./
+      target: development
+    volumes:
+      - .:/src  
+    command: npm run dev
+    ports:
+      - 8080:8080
+    environment:
+      NODE_ENV: development  
 volumes:
   postgres:
