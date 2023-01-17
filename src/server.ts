@@ -7,6 +7,7 @@ import responseTime from "response-time";
 import requestHeaders from "./middleware/requestHeaders";
 import errorHandler from "./middleware/requestErrorHandle";
 import { pageNotFound } from "./middleware/404Page";
+import userRouter from "./routes/users.route";
 dotenv.config();
 
 const app: Application = express();
@@ -27,7 +28,7 @@ app.use(requestHeaders);
 
 app.use(responseTime());
 
-
+app.use("v1/api/", userRouter);
 
 // page not found
 app.use(pageNotFound);

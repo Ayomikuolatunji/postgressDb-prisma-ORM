@@ -21,6 +21,7 @@ const response_time_1 = __importDefault(require("response-time"));
 const requestHeaders_1 = __importDefault(require("./middleware/requestHeaders"));
 const requestErrorHandle_1 = __importDefault(require("./middleware/requestErrorHandle"));
 const _404Page_1 = require("./middleware/404Page");
+const users_route_1 = __importDefault(require("./routes/users.route"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 // convert request to json using express middleware
@@ -33,6 +34,7 @@ app.use((0, compression_1.default)());
 // client request headers
 app.use(requestHeaders_1.default);
 app.use((0, response_time_1.default)());
+app.use("v1/api/", users_route_1.default);
 // page not found
 app.use(_404Page_1.pageNotFound);
 // express client error handle
