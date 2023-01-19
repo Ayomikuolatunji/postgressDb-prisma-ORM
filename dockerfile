@@ -1,15 +1,15 @@
-FROM node:18 as development 
+FROM node:18
 
-# Create app directory
-WORKDIR /src
-COPY package*.json ./
+WORKDIR /usr/src/app
 
+COPY ["package.json", "package-lock.json", "tsconfig.json", ".env", "./"]
 
+COPY ./src ./src
 
-ENV NODE_ENV=development
 RUN npm install
-RUN npm install concurrently
 
-COPY . .
+run npm i concurrently
+
 EXPOSE 8080
-CMD [ "npm", "run", "dev" ]
+
+CMD npm run dev

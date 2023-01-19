@@ -1,29 +1,26 @@
 version: "3.8"
 services:
+  api:
+    container_name: api
+    restart: always
+    build: .
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+    volumes:
+    - .:/usr/src/app
   postgres:
     image: postgres:13
     restart: always
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=ayomiku222
+      - POSTGRES_DB=ayodb
     volumes:
       - postgres:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-  app:
-    container_name: app
-    depends_on:
-      - postgres
-    image: postgres-db
-    build:
-      context: ./
-      target: development
-    volumes:
-      - .:/src  
-    command: npm run dev
-    ports:
-      - 8080:8080
-    environment:
-      NODE_ENV: development  
+        
 volumes:
   postgres:
